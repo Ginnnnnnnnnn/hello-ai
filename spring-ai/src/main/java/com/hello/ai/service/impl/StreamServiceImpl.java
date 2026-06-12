@@ -1,32 +1,40 @@
 package com.hello.ai.service.impl;
 
-import com.hello.ai.service.HttpService;
+import cn.hutool.core.thread.ThreadUtil;
+import com.hello.ai.constants.ThreadConstants;
+import com.hello.ai.service.StreamService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import reactor.core.publisher.Flux;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 
 import static com.hello.ai.constants.CommonConstants.API_URL;
 
 /**
- * http
+ * 流式输出
  *
  * @author Gin
  * @since 2026-06-12
  */
 @Slf4j
 @Service
-public class HttpServiceImpl implements HttpService {
+public class StreamServiceImpl implements StreamService {
 
     @Value("${api.key}")
     private String API_KEY;
 
     @Override
-    public String steam() {
+    public String http() {
         String requestBody = """
                 {
                     "model": "qwen-plus",
@@ -59,4 +67,38 @@ public class HttpServiceImpl implements HttpService {
         }
     }
 
+    @Override
+    public StreamingResponseBody httpStream() {
+        return outputStream -> {
+            for (int i = 0; i < 10; i++) {
+                ThreadUtil.sleep(1000L);
+                outputStream.write(("message" + i).getBytes(StandardCharsets.UTF_8));
+                outputStream.flush();
+            }
+        };
+    }
+
+    @Override
+    public SseEmitter sse() {
+        SseEmitter sseEmitter = new SseEmitter();
+        ThreadConstants.executor.submit(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    ThreadUtil.sleep(1000L);
+                    sseEmitter.send("message" + i);
+                }
+            } catch (IOException e) {
+                sseEmitter.completeWithError(e);
+            } finally {
+                sseEmitter.complete();
+            }
+        });
+        return sseEmitter;
+    }
+
+    @Override
+    public Flux<String> flux() {
+        return Flux.interval(Duration.ofSeconds(1))
+                .map(i -> "message" + i);
+    }
 }

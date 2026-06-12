@@ -30,7 +30,7 @@ import static com.hello.ai.constants.CommonConstants.API_URL;
 @Service
 public class StreamServiceImpl implements StreamService {
 
-    @Value("${api.key}")
+    @Value("${spring.ai.dashscope.api-key}")
     private String API_KEY;
 
     @Override

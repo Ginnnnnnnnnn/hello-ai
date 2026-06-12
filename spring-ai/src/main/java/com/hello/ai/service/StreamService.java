@@ -5,7 +5,7 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 import reactor.core.publisher.Flux;
 
 /**
- * http
+ * 流式输出
  *
  * @author Gin
  * @since 2026-06-12

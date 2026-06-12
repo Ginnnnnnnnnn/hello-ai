@@ -1,13 +1,13 @@
-package org.example;
+package com.hello.ai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main {
+public class SpringAiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(SpringAiApplication.class, args);
     }
 
 }

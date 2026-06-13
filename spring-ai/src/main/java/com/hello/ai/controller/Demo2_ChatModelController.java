@@ -56,7 +56,7 @@ public class Demo2_ChatModelController {
     public Flux<String> streamPrompt(@RequestParam String message, HttpServletResponse response) {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
         Flux<ChatResponse> chatResponseFlux = chatModelService.streamPrompt(message);
-        return chatResponseFlux.map(chatResponse -> chatResponse.getResult().getOutput().getText());
+        return chatResponseFlux.mapNotNull(chatResponse -> chatResponse.getResult().getOutput().getText());
     }
 
 }

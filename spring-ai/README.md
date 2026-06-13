@@ -13,7 +13,8 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
 
 ### ChatModel
 
-ChatModel是专门和对话模型对接的对象。定义了与对话功能的语言模型交互的统一方式。
+专门和对话模型对接的对象。定义了与对话功能的语言模型交互的统一方式。
 
-- call
-- stream
+### ChatClient
+
+一个更高级、更简洁的工具。

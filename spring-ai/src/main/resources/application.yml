@@ -7,6 +7,6 @@ spring:
     name: spring-ai
   profiles:
     active: @profiles.active@
-
-api:
-  key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ai:
+    dashscope:
+      api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

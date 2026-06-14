@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
 /**
- * prompt
+ * Prompt
  *
  * @author Gin
  * @since 2026-06-14

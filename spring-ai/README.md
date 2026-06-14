@@ -18,3 +18,13 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
 ### ChatClient
 
 一个更高级、更简洁的工具。
+
+### 提示词
+
+- 角色/规则定义 ( role )
+- 少量示例 ( few shot )
+- 输出格式
+- 指定思考
+- 思维链
+
+### 提示词模板

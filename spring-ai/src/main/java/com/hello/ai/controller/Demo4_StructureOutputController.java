@@ -1,6 +1,6 @@
 package com.hello.ai.controller;
 
-import com.hello.ai.service.PromptService;
+import com.hello.ai.service.StructureOutputService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,34 +12,34 @@ import reactor.core.publisher.Flux;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Prompt
+ * StructureOutput
  *
  * @author Gin
  * @since 2026-06-14
  */
 @RestController
-@RequestMapping("/prompt")
-public class Demo4_PromptController {
+@RequestMapping("/structure/output")
+public class Demo4_StructureOutputController {
 
     @Autowired
-    private PromptService promptService;
+    private StructureOutputService structureOutputService;
 
-    @GetMapping("/role")
-    public Flux<String> role(@RequestParam String message, HttpServletResponse response) {
+    @GetMapping("/object")
+    public Flux<String> object(@RequestParam String message, HttpServletResponse response) {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        return promptService.role(message);
+        return structureOutputService.object(message);
     }
 
-    @GetMapping("/shot")
-    public Flux<String> shot(@RequestParam String message, HttpServletResponse response) {
+    @GetMapping("/anime")
+    public String anime(@RequestParam String message, HttpServletResponse response) {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        return promptService.shot(message);
+        return structureOutputService.anime(message);
     }
 
-    @GetMapping("/chat")
-    public Flux<String> chat(@RequestParam String message, HttpServletResponse response) {
+    @GetMapping("/animeList")
+    public String animeList(@RequestParam String message, HttpServletResponse response) {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        return promptService.chat(message);
+        return structureOutputService.animeList(message);
     }
 
 }

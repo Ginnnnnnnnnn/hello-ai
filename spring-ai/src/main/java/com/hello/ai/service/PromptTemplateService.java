@@ -4,7 +4,7 @@ import reactor.core.publisher.Flux;
 
 public interface PromptTemplateService {
 
-    Flux<String> template(String message);
+    Flux<String> string(String message);
 
     Flux<String> file(String message);
 

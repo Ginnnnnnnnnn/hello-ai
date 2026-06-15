@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * PromptTemplate
  *
@@ -24,13 +26,13 @@ public class Demo4_PromptTemplateController {
 
     @GetMapping("/string")
     public Flux<String> template(@RequestParam String message, HttpServletResponse response) {
-        response.setCharacterEncoding("UTF-8");
-        return promptTemplateService.template(message);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        return promptTemplateService.string(message);
     }
 
     @GetMapping("/file")
     public Flux<String> file(@RequestParam String message, HttpServletResponse response) {
-        response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
         return promptTemplateService.file(message);
     }
 

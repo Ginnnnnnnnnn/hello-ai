@@ -2,6 +2,7 @@ package com.hello.ai.service.impl;
 
 import com.hello.ai.service.PromptTemplateService;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.InitializingBean;
@@ -27,11 +28,14 @@ public class PromptTemplateServiceImpl implements PromptTemplateService, Initial
 
     @Override
     public void afterPropertiesSet() {
-        this.chatClient = ChatClient.builder(chatModel).build();
+        this.chatClient = ChatClient
+                .builder(chatModel)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .build();
     }
 
     @Override
-    public Flux<String> template(String message) {
+    public Flux<String> string(String message) {
         PromptTemplate promptTemplate = new PromptTemplate("给我推荐几个关于{topic}的{language}开源项目");
         promptTemplate.add("topic", message);
         promptTemplate.add("language", "Java");

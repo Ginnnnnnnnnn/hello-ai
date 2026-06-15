@@ -2,6 +2,7 @@ package com.hello.ai.service.impl;
 
 import com.hello.ai.service.PromptService;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,10 @@ public class PromptServiceImpl implements PromptService, InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        this.chatClient = ChatClient.builder(chatModel).build();
+        this.chatClient = ChatClient
+                .builder(chatModel)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .build();
     }
 
     @Override

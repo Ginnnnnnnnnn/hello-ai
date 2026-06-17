@@ -43,3 +43,4 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
   使用 List 存放所有 message，每次全部传递给大模型。
 - ChatMemory  
   框架内部实现，只需要传递 chatId 即可实现对话记忆。
+

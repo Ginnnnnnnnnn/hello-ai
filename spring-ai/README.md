@@ -42,5 +42,17 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
 - MessageList  
   使用 List 存放所有 message，每次全部传递给大模型。
 - ChatMemory  
-  框架内部实现，只需要传递 chatId 即可实现对话记忆。
+  框架内部实现，只需要传递 chatId 即可实现对话记忆，可以手动创建，也可以引入依赖注入。
+- 持久化记忆
+    - JdbcChatMemoryRepository  
+      使用 JDBC 将消息存储在关系型数据库中，它支持多种数据库，PostgreSQL、MySQL / MariaDB、SQL Server、Oracle等
+    - CassandraChatMemoryRepository  
+      使用 Apache Cassandra 存储消息。它适用于需要持久化存储聊天记录的应用，特别是在需要高可用性、持久性、可扩展性，以及利用TTL功能时。
+    - Neo4jChatMemoryRepository
+      使用 Neo4j 将聊天消息存储为属性图数据库中的节点和关系。它适用于希望利用 Neo4j 的图功能进行聊天记忆持久化的应用程序。
+    - CosmosDBChatMemoryRepository  
+      使用 Azure Cosmos DB NoSQL API 来存储消息。它适用于需要全球分布式、高度可扩展的文档数据库来持 久化聊天内存的应用程序。该存储库使用对话
+      ID 作为分区键，以确保高效的数据分布和快速检索。
+    - MongoChatMemoryRepository  
+      使用 MongoDB 存储消息。它适用于需要灵活的、面向文档的数据库进行聊天内存持久化的应用程序。
 

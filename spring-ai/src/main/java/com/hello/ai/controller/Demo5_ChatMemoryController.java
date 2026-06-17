@@ -36,4 +36,10 @@ public class Demo5_ChatMemoryController {
         return chatMemoryService.chatId(chatId, message);
     }
 
+    @GetMapping("/repository")
+    public Flux<String> repository(@RequestParam String chatId, @RequestParam String message, HttpServletResponse response) {
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        return chatMemoryService.repository(chatId, message);
+    }
+
 }

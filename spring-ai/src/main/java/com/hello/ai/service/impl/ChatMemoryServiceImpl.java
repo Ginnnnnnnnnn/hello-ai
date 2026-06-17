@@ -5,6 +5,8 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
@@ -32,11 +34,13 @@ public class ChatMemoryServiceImpl implements ChatMemoryService, InitializingBea
     private ChatModel chatModel;
 
     @Autowired
-    private ChatMemory chatMemory;
+    private JdbcChatMemoryRepository jdbcChatMemoryRepository;
 
     private ChatClient chatClient;
 
     private ChatClient chatMemoryClient;
+
+    private ChatClient chatMemoryJdbcClient;
 
     List<Message> messages = new ArrayList<>();
 
@@ -46,12 +50,26 @@ public class ChatMemoryServiceImpl implements ChatMemoryService, InitializingBea
                 .builder(chatModel)
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
-//        ChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(100).build();
+        ChatMemory chatMemory = MessageWindowChatMemory.builder()
+                .maxMessages(100)
+                .build();
         this.chatMemoryClient = ChatClient
                 .builder(chatModel)
                 .defaultSystem("你是个傲娇小萝莉")
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                        new SimpleLoggerAdvisor()
+                )
+                .build();
+        ChatMemory jdbcChatMemory = MessageWindowChatMemory.builder()
+                .maxMessages(100)
+                .chatMemoryRepository(jdbcChatMemoryRepository)
+                .build();
+        this.chatMemoryJdbcClient = ChatClient
+                .builder(chatModel)
+                .defaultSystem("你是个高冷小萝莉")
+                .defaultAdvisors(
+                        MessageChatMemoryAdvisor.builder(jdbcChatMemory).build(),
                         new SimpleLoggerAdvisor()
                 )
                 .build();
@@ -73,6 +91,16 @@ public class ChatMemoryServiceImpl implements ChatMemoryService, InitializingBea
     @Override
     public Flux<String> chatId(String chatId, String message) {
         return chatMemoryClient.prompt(new Prompt(
+                        new UserMessage(message)
+                ))
+                .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
+                .stream()
+                .content();
+    }
+
+    @Override
+    public Flux<String> repository(String chatId, String message) {
+        return chatMemoryJdbcClient.prompt(new Prompt(
                         new UserMessage(message)
                 ))
                 .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))

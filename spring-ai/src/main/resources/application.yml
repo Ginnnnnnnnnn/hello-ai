@@ -8,5 +8,16 @@ spring:
   profiles:
     active: @profiles.active@
   ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            platform: mysql
+            initialize-schema: always
     dashscope:
       api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hello-ai?useSSL=false&serverTimezone=UTC
+    username: xxx
+    password: xxx

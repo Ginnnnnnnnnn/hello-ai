@@ -14,4 +14,6 @@ public interface ChatMemoryService {
 
     Flux<String> chatId(String chatId, String message);
 
+    Flux<String> repository(String chatId, String message);
+
 }

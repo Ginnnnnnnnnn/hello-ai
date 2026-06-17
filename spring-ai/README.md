@@ -36,3 +36,10 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
 ### 结构化输出
 
 让大模型按照我们要求的合适来做输出。比较常用的格式就是JSON，因为他最灵活。
+
+### 对话记忆
+
+- MessageList  
+  使用 List 存放所有 message，每次全部传递给大模型。
+- ChatMemory  
+  框架内部实现，只需要传递 chatId 即可实现对话记忆。

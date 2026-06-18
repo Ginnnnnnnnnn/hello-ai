@@ -22,6 +22,8 @@
         <spring.ai.alibaba.chat.memory.jdbc.version>1.1.0</spring.ai.alibaba.chat.memory.jdbc.version>
         <spring.ai.model.ollama.version>1.1.0</spring.ai.model.ollama.version>
         <spring.ai.ollama.version>1.1.0</spring.ai.ollama.version>
+        <langchain4j.version>1.8.0</langchain4j.version>
+        <langchain4j.open.ai.version>1.8.0-beta15</langchain4j.open.ai.version>
         <mysql.connector.version>8.0.33</mysql.connector.version>
         <hutool.version>5.8.38</hutool.version>
         <lombok.version>1.18.42</lombok.version>
@@ -29,6 +31,7 @@
 
     <modules>
         <module>spring-ai</module>
+        <module>langchain4j</module>
     </modules>
 
     <dependencyManagement>
@@ -64,6 +67,16 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
                 <version>${spring.ai.alibaba.chat.memory.jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+                <version>${langchain4j.open.ai.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

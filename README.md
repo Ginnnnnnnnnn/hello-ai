@@ -5,3 +5,7 @@
 ## 🍃 Spring AI / Spring AI Alibaba
 
 [README.md](spring-ai/README.md)
+
+## 🔗 LangChain4j
+
+[README.md](langchain4j/README.md)

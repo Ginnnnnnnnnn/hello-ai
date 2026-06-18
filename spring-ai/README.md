@@ -56,3 +56,12 @@ AI 模型的核心标准。Spring AI Alibaba 在 Spring AI 的基础上，提供
     - MongoChatMemoryRepository  
       使用 MongoDB 存储消息。它适用于需要灵活的、面向文档的数据库进行聊天内存持久化的应用程序。
 
+### Advisor
+
+Spring AI 中提供了一个灵活且强大的方式，可以用于拦截、修改和增强 Spring 应用中的 AI
+交互功能，那就是Advisor，通过利用Advisor，开发者可以创建更复杂、可重用且易于维护的 AI 组件。
+
+- ChatModelCallAdvisor
+- SimpleLoggerAdvisor
+- SafeGuardAdvisor
+- BaseAdvisor

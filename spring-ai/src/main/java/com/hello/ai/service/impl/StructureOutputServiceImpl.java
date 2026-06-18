@@ -1,5 +1,6 @@
 package com.hello.ai.service.impl;
 
+import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.hello.ai.service.StructureOutputService;
 import com.hello.ai.structure.AnimeStructure;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +8,6 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.beans.factory.InitializingBean;
@@ -29,7 +29,7 @@ import java.util.List;
 public class StructureOutputServiceImpl implements StructureOutputService, InitializingBean {
 
     @Autowired
-    private ChatModel chatModel;
+    private DashScopeChatModel chatModel;
 
     private ChatClient chatClient;
 

@@ -65,3 +65,39 @@ Spring AI 中提供了一个灵活且强大的方式，可以用于拦截、修�
 - SimpleLoggerAdvisor
 - SafeGuardAdvisor
 - BaseAdvisor
+
+### 调用本地模型
+
+- Ollama
+    - ollama pull deepseek-r1:7b 下载模型。
+    - ollama run deepseek-r1:7b 启动模型。
+    - ollama stop deepseek-r1:7b 停止模型。
+    - ollama ps 命令用于查看正在运行的 Ollama 模型。
+    - ollama ls 命令用于列出所有已下载的 Ollama 模型。
+
+- 本地调用Ollama
+    ```xml
+    <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-ollama</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-autoconfigure-model-ollama</artifactId>
+    </dependency>
+    ```
+
+    ```java
+    @Autowired
+    private OllamaChatModel chatModel;
+  
+    private ChatClient chatClient;
+  
+    @Override
+    public void afterPropertiesSet() {
+        this.chatClient = ChatClient
+                .builder(chatModel)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .build();
+    }  
+    ```

@@ -1,9 +1,9 @@
 package com.hello.ai.service.impl;
 
+import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.hello.ai.service.PromptTemplateService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class PromptTemplateServiceImpl implements PromptTemplateService, InitializingBean {
 
     @Autowired
-    private ChatModel chatModel;
+    private DashScopeChatModel chatModel;
 
     @Value("classpath:templates/open-source-system-prompt.st")
     private Resource resource;

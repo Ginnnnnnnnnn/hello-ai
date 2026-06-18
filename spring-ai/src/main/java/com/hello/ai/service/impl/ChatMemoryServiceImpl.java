@@ -1,5 +1,6 @@
 package com.hello.ai.service.impl;
 
+import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.hello.ai.service.ChatMemoryService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -11,7 +12,6 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import java.util.List;
 public class ChatMemoryServiceImpl implements ChatMemoryService, InitializingBean {
 
     @Autowired
-    private ChatModel chatModel;
+    private DashScopeChatModel chatModel;
 
     @Autowired
     private JdbcChatMemoryRepository jdbcChatMemoryRepository;

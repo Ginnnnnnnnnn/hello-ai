@@ -16,6 +16,10 @@ spring:
             initialize-schema: always
     dashscope:
       api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: deepseek-r1:7b
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hello-ai?useSSL=false&serverTimezone=UTC

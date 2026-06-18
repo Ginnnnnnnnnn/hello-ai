@@ -1,9 +1,9 @@
 package com.hello.ai.service.impl;
 
+import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.hello.ai.service.PromptService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 public class PromptServiceImpl implements PromptService, InitializingBean {
 
     @Autowired
-    private ChatModel chatModel;
+    private DashScopeChatModel chatModel;
 
     private ChatClient chatClient;
 

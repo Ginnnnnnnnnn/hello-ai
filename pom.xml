@@ -20,6 +20,8 @@
         <spring.ai.alibaba.version>1.1.0.0</spring.ai.alibaba.version>
         <spring.ai.alibaba.chat.memory.version>1.1.0</spring.ai.alibaba.chat.memory.version>
         <spring.ai.alibaba.chat.memory.jdbc.version>1.1.0</spring.ai.alibaba.chat.memory.jdbc.version>
+        <spring.ai.model.ollama.version>1.1.0</spring.ai.model.ollama.version>
+        <spring.ai.ollama.version>1.1.0</spring.ai.ollama.version>
         <mysql.connector.version>8.0.33</mysql.connector.version>
         <hutool.version>5.8.38</hutool.version>
         <lombok.version>1.18.42</lombok.version>
@@ -45,8 +47,18 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-ollama</artifactId>
+                <version>${spring.ai.ollama.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-autoconfigure-model-chat-memory</artifactId>
                 <version>${spring.ai.alibaba.chat.memory.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-autoconfigure-model-ollama</artifactId>
+                <version>${spring.ai.model.ollama.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/chat")
-public class ChatController {
+public class Demo1_ChatController {
 
     @Autowired
     private ChatService chatService;
 
-    @RequestMapping("/message")
-    public String message(@RequestParam String message) {
-        return chatService.message(message);
+    @RequestMapping("/hello")
+    public String hello(@RequestParam String message) {
+        return chatService.hello(message);
     }
 
 }

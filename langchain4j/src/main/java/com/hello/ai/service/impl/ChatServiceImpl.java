@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 public class ChatServiceImpl implements ChatService {
 
     @Autowired
-    OpenAiChatModel chatModel;
+    private OpenAiChatModel chatModel;
 
     @Override
-    public String message(String message) {
+    public String hello(String message) {
         return chatModel.chat(message);
     }
 

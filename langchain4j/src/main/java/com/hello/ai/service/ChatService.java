@@ -8,6 +8,6 @@ package com.hello.ai.service;
  */
 public interface ChatService {
 
-    String message(String message);
+    String hello(String message);
 
 }

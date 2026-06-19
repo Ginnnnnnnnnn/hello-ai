@@ -14,4 +14,10 @@ public interface SimpleService {
 
     Flux<String> stream(String message);
 
+    String memory(String message);
+
+    String structure(String message);
+
+    String tool(String message);
+
 }

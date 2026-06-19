@@ -34,4 +34,19 @@ public class Demo2_SimpleController {
         return simpleService.stream(message);
     }
 
+    @RequestMapping("/memory")
+    public String memory(@RequestParam String message) {
+        return simpleService.memory(message);
+    }
+
+    @RequestMapping("/structure")
+    public String structure(@RequestParam String message) {
+        return simpleService.structure(message);
+    }
+
+    @RequestMapping("/tool")
+    public String tool(@RequestParam String message) {
+        return simpleService.tool(message);
+    }
+
 }

@@ -20,3 +20,8 @@ Services两种类别，Chains源于Langchain，相当于将低层次模块组合
 Service：AI Services是LangChain4J为 Java 量身定制的解决方案，和Spring Data
 JPA类似，只需要显示的定义接口，并且可以自定义的加入Memory、Tools或者RAG，具体调用逻辑实现由LangChain4j代理完成。
 
+- Chat
+- Stream
+- 对话记忆
+- 结构化输出
+- 工具调用

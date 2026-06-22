@@ -101,3 +101,47 @@ Spring AI 中提供了一个灵活且强大的方式，可以用于拦截、修�
                 .build();
     }  
     ```
+
+## Function Call
+
+- 方式一：定义 Function 类型返回值的 Bean
+
+    ```java
+    public class FunctionCallConfiguration {
+        @Bean
+        @Description("获取当前时间")
+        public Function<String, String> getTimeFunction() {
+            return TimeTools::getTimeByZoneId;
+        }
+    }
+    
+    public class TimeTools {
+        public String getTimeByZoneId(
+            @JsonPropertyDescription(description = "时区标识。例如：Asia/Shanghai。默认：Asia/Shanghai。") String zoneId
+        ) {
+            ZoneId zid = ZoneId.of(zoneId);
+            System.out.println("getTimeByZoneId");
+            ZonedDateTime zonedDateTime = ZonedDateTime.now(zid);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+            return zonedDateTime.format(formatter);
+        }
+    }
+    ```
+
+- 方式二：使用 @Tool、@ToolParam 注解
+
+    ```java
+    public class TimeTools {
+        @Tool(description = "获取当前时间")
+        public String getTimeByZoneId(
+            @ToolParam(description = "时区标识。例如：Asia/Shanghai。默认：Asia/Shanghai。") String zoneId
+        ) {
+            ZoneId zid = ZoneId.of(zoneId);
+            ZonedDateTime zonedDateTime = ZonedDateTime.now(zid);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+            String format = zonedDateTime.format(formatter);
+            log.info("getTimeByZoneId:[{}]", format);
+            return format;
+        }
+    }
+    ```

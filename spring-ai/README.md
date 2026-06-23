@@ -107,30 +107,56 @@ Spring AI 中提供了一个灵活且强大的方式，可以用于拦截、修�
 - 方式一：定义 Function 类型返回值的 Bean
 
     ```java
-    public class FunctionCallConfiguration {
+    public void doMain() {
+        ChatClient.builder(chatModel)
+                .defaultToolNames("getTimeFunction")
+                .build();
+    }
+
+    @Slf4j
+    @Configuration
+    public class FunctionConfig {
+    
         @Bean
         @Description("获取当前时间")
-        public Function<String, String> getTimeFunction() {
-            return TimeTools::getTimeByZoneId;
+        public Function<Request, Response> getTimeFunction() {
+            return FunctionConfig::getTimeByZoneId;
         }
-    }
     
-    public class TimeTools {
-        public String getTimeByZoneId(
-            @JsonPropertyDescription(description = "时区标识。例如：Asia/Shanghai。默认：Asia/Shanghai。") String zoneId
-        ) {
-            ZoneId zid = ZoneId.of(zoneId);
-            System.out.println("getTimeByZoneId");
+        public static Response getTimeByZoneId(Request request) {
+            ZoneId zid = ZoneId.of(request.zoneId);
             ZonedDateTime zonedDateTime = ZonedDateTime.now(zid);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
-            return zonedDateTime.format(formatter);
+            String format = zonedDateTime.format(formatter);
+            log.info("getTimeByZoneId Function :[{}]", format);
+            return new Response(format);
         }
+    
+        public record Request(
+                @JsonProperty(required = true, value = "zoneId")
+                @JsonPropertyDescription("时区标识。例如：Asia/Shanghai。默认：Asia/Shanghai。")
+                String zoneId
+        ) {
+    
+        }
+    
+        public record Response(String time) {
+    
+        }
+    
     }
     ```
 
 - 方式二：使用 @Tool、@ToolParam 注解
 
     ```java
+    public void doMain() {
+        ChatClient.builder(chatModel)
+            .defaultTools(new TimeTools())
+            .build();
+    }
+  
+    @Slf4j
     public class TimeTools {
         @Tool(description = "获取当前时间")
         public String getTimeByZoneId(

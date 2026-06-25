@@ -34,6 +34,7 @@
     <modules>
         <module>spring-ai</module>
         <module>langchain4j</module>
+        <module>mcp</module>
     </modules>
 
     <dependencyManagement>

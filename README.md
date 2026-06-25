@@ -6,6 +6,10 @@
 
 [README.md](spring-ai/README.md)
 
-## 🔗 LangChain4j
+## ⛓️ LangChain4j
 
 [README.md](langchain4j/README.md)
+
+## 🔌MCP
+
+[README.md](mcp/README.md)

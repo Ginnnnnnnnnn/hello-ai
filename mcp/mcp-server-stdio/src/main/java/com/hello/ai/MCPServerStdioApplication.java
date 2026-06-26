@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class McpServerStdioApplication {
+public class MCPServerStdioApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(McpServerStdioApplication.class, args);
+        SpringApplication.run(MCPServerStdioApplication.class, args);
     }
 
 }

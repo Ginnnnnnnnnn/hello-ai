@@ -1,4 +1,9 @@
+server:
+  port: 8002
+
 spring:
+  application:
+    name: mcp-weather-stdio
   main:
     web-application-type: none
     banner-mode: off

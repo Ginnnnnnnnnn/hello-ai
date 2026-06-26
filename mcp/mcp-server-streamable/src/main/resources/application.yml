@@ -1,0 +1,25 @@
+server:
+  port: 8004
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+spring:
+  application:
+    name: mcp-weather-streamable
+  ai:
+    mcp:
+      server:
+        name: streamable-mcp-server
+        version: 1.0.0
+        type: SYNC
+        protocol: STREAMABLE # 这个地方改成STATELESS，就是无状态模式
+        instructions: "这个服务是用来查询城市天气的。"
+        resource-change-notification: true
+        tool-change-notification: true
+        prompt-change-notification: true
+        streamable-http:
+          mcp-endpoint: /api/mcp
+          keep-alive-interval: 30s

@@ -1,13 +1,14 @@
 package com.hello.ai.service;
 
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WeatherService {
 
-    @Tool(name = "getWeather", description = "根据城市名称查询天气信息")
-    public String getWeather(String city) {
+    @Tool(description = "获取城市天气")
+    public String getWeather(@ToolParam(description = "城市名字") String city) {
         if (city == null) {
             return "请提供城市名称";
         }

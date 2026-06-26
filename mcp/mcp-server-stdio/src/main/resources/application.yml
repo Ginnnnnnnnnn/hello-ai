@@ -1,9 +1,15 @@
 server:
   port: 8002
+  servlet:
+    context-path: /mcp/server/stdio
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
 
 spring:
   application:
-    name: mcp-weather-stdio
+    name: mcp-server-stdio
   main:
     web-application-type: none
     banner-mode: off

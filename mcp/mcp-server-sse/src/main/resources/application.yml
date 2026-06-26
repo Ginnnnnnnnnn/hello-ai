@@ -8,7 +8,7 @@ server:
 
 spring:
   application:
-    name: mcp-weather-sse
+    name: mcp-server-sse
   ai:
     mcp:
       server:

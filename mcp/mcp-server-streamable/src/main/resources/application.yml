@@ -8,7 +8,7 @@ server:
 
 spring:
   application:
-    name: mcp-weather-streamable
+    name: mcp-server-streamable
   ai:
     mcp:
       server:

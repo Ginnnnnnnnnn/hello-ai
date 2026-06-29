@@ -114,6 +114,7 @@ public class MCPSSEServiceImpl implements MCPSSEService {
     private ChatClient buildChatClient() {
         SyncMcpToolCallbackProvider provider = SyncMcpToolCallbackProvider.builder()
                 .mcpClients(List.of(this.sseClient))
+                .toolFilter((conn, tool) -> tool.name().startsWith("weather"))
                 .build();
         ToolCallback[] callbacks = provider.getToolCallbacks();
         return ChatClient.builder(chatModel)

@@ -24,6 +24,10 @@
         <spring.ai.ollama.version>1.1.0</spring.ai.ollama.version>
         <spring.ai.mcp.server.version>1.1.0</spring.ai.mcp.server.version>
         <spring.ai.mcp.client.version>1.1.0</spring.ai.mcp.client.version>
+        <spring.ai.pdf.document.reader.version>1.1.0</spring.ai.pdf.document.reader.version>
+        <spring.ai.jsoup.document.reader.version>1.1.0</spring.ai.jsoup.document.reader.version>
+        <spring.ai.markdown.document.reader.version>1.1.0</spring.ai.markdown.document.reader.version>
+        <spring.ai.tika.document.reader.version>1.1.0</spring.ai.tika.document.reader.version>
         <langchain4j.version>1.8.0</langchain4j.version>
         <langchain4j.open.ai.version>1.8.0-beta15</langchain4j.open.ai.version>
         <langchain4j.reactor.version>1.8.0-beta15</langchain4j.reactor.version>
@@ -83,6 +87,26 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-starter-mcp-client</artifactId>
                 <version>${spring.ai.mcp.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-pdf-document-reader</artifactId>
+                <version>${spring.ai.pdf.document.reader.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-jsoup-document-reader</artifactId>
+                <version>${spring.ai.jsoup.document.reader.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-markdown-document-reader</artifactId>
+                <version>${spring.ai.markdown.document.reader.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-tika-document-reader</artifactId>
+                <version>${spring.ai.tika.document.reader.version}</version>
             </dependency>
             <dependency>
                 <groupId>dev.langchain4j</groupId>

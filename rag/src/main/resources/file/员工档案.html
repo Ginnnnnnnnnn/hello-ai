@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工档案（20份）</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f9f9fc;
+            color: #1e2a3a;
+        }
+        .employee {
+            background: #ffffff;
+            border-left: 6px solid #3b7cff;
+            border-radius: 10px;
+            padding: 18px 24px 14px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.15s;
+        }
+        .employee:hover {
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+        }
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0b1c33;
+            border-bottom: 2px solid #e6edf5;
+            padding-bottom: 6px;
+        }
+        .info {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 4px 10px;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+        .label {
+            font-weight: 500;
+            color: #4a5b6e;
+        }
+        .value {
+            color: #1e2a3a;
+        }
+        .value.long {
+            grid-column: 2 / 3;
+        }
+        /* 简介单独占一行 */
+        .intro {
+            grid-column: 1 / 3;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed #e0e7ef;
+        }
+        .intro .label {
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .intro .value {
+            display: inline;
+        }
+        @media (max-width: 600px) {
+            .info {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .label {
+                margin-top: 6px;
+            }
+            .intro {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center; color:#1e2a3a; border-bottom:3px solid #3b7cff; padding-bottom:12px;">员工档案</h1>
+    <p style="text-align:center; color:#5a6b7e; margin-top:-6px; margin-bottom:30px;">共计 20 人 · 覆盖产品、研发、销售三大部门</p>
+
+    <!-- 第1位：张伟 -->
+    <div class="employee">
+        <h2>张伟</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP001</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品总监</span>
+            <span class="label">特长：</span><span class="value">战略规划、市场分析</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1985-03-15</span>
+            <span class="label">学历：</span><span class="value">硕士</span>
+            <span class="label">学院：</span><span class="value">北京大学光华管理学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">拥有10年互联网产品管理经验，主导过多个从0到1的产品项目，善于把握市场趋势，推动产品商业化落地。</span></div>
+        </div>
+    </div>
+
+    <!-- 第2位：李婷 -->
+    <div class="employee">
+        <h2>李婷</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP002</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品总监</span>
+            <span class="label">特长：</span><span class="value">用户研究、产品创新</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1987-07-21</span>
+            <span class="label">学历：</span><span class="value">硕士</span>
+            <span class="label">学院：</span><span class="value">清华大学经济管理学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">专注用户体验与商业模式创新，擅长通过数据洞察用户需求，带领团队打造了百万级用户产品矩阵。</span></div>
+        </div>
+    </div>
+
+    <!-- 第3位：王磊 -->
+    <div class="employee">
+        <h2>王磊</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP003</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品经理</span>
+            <span class="label">特长：</span><span class="value">需求梳理、敏捷开发</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1990-11-02</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">浙江大学计算机学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">5年产品经理经验，精通Scrum流程，善于跨部门沟通，能高效推动产品迭代与项目交付。</span></div>
+        </div>
+    </div>
+
+    <!-- 第4位：陈雪 -->
+    <div class="employee">
+        <h2>陈雪</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP004</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品经理</span>
+            <span class="label">特长：</span><span class="value">数据分析、功能设计</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1992-05-18</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">上海交通大学安泰经管学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">数据驱动型产品经理，善于用A/B测试优化功能，曾主导多个核心模块改版，显著提升用户留存。</span></div>
+        </div>
+    </div>
+
+    <!-- 第5位：刘洋 -->
+    <div class="employee">
+        <h2>刘洋</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP005</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品研发</span>
+            <span class="label">特长：</span><span class="value">全栈开发、产品原型</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1991-09-09</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">华中科技大学软件学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">技术背景扎实，擅长快速搭建产品原型并验证可行性，在技术选型和开发落地之间取得良好平衡。</span></div>
+        </div>
+    </div>
+
+    <!-- 第6位：赵雨 -->
+    <div class="employee">
+        <h2>赵雨</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP006</span>
+            <span class="label">部门：</span><span class="value">产品部</span>
+            <span class="label">职位：</span><span class="value">产品研发</span>
+            <span class="label">特长：</span><span class="value">交互设计、前端实现</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1993-12-25</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">北京邮电大学计算机学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">擅长将设计稿转化为高质量前端代码，参与过多个创新产品的研发，重视用户体验与界面流畅度。</span></div>
+        </div>
+    </div>
+
+    <!-- 第7位：孙鹏 -->
+    <div class="employee">
+        <h2>孙鹏</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP007</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">研发总结</span>
+            <span class="label">特长：</span><span class="value">系统架构、技术决策</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1986-06-30</span>
+            <span class="label">学历：</span><span class="value">硕士</span>
+            <span class="label">学院：</span><span class="value">中国科学院计算所</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">资深技术负责人，主导过亿级用户系统的架构设计，善于攻克高并发、分布式等核心技术难题。</span></div>
+        </div>
+    </div>
+
+    <!-- 第8位：周琳 -->
+    <div class="employee">
+        <h2>周琳</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP008</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">前端经理</span>
+            <span class="label">特长：</span><span class="value">前端工程化、性能优化</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1989-04-12</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">南京大学软件学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">前端团队负责人，推动组件化开发与自动化构建，优化页面加载性能，提升研发效率。</span></div>
+        </div>
+    </div>
+
+    <!-- 第9位：吴刚 -->
+    <div class="employee">
+        <h2>吴刚</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP009</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">后端经理</span>
+            <span class="label">特长：</span><span class="value">微服务、数据库调优</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1988-08-19</span>
+            <span class="label">学历：</span><span class="value">硕士</span>
+            <span class="label">学院：</span><span class="value">电子科技大学计算机学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">多年后端架构经验，精通Spring Cloud与分布式事务，擅长高可用、高并发系统的设计与优化。</span></div>
+        </div>
+    </div>
+
+    <!-- 第10位：郑欣 -->
+    <div class="employee">
+        <h2>郑欣</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP010</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">前端开发</span>
+            <span class="label">特长：</span><span class="value">React、Vue、TypeScript</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1994-02-14</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">西安电子科技大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">3年前端开发经验，热爱前沿技术，代码风格严谨，参与过多个中大型后台管理系统开发。</span></div>
+        </div>
+    </div>
+
+    <!-- 第11位：钱丽 -->
+    <div class="employee">
+        <h2>钱丽</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP011</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">前端开发</span>
+            <span class="label">特长：</span><span class="value">CSS动画、跨端适配</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1995-06-07</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">四川大学计算机学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">擅长移动端H5开发与响应式布局，注重设计还原度，对交互动效有深入理解。</span></div>
+        </div>
+    </div>
+
+    <!-- 第12位：冯宇 -->
+    <div class="employee">
+        <h2>冯宇</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP012</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">后端开发</span>
+            <span class="label">特长：</span><span class="value">Java、Spring Cloud</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1993-10-03</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">华南理工大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">后端开发工程师，参与过订单中台与支付系统建设，注重代码质量和系统稳定性。</span></div>
+        </div>
+    </div>
+
+    <!-- 第13位：蒋文 -->
+    <div class="employee">
+        <h2>蒋文</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP013</span>
+            <span class="label">部门：</span><span class="value">研发部</span>
+            <span class="label">职位：</span><span class="value">后端开发</span>
+            <span class="label">特长：</span><span class="value">Go、Kafka、Redis</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1994-07-19</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">武汉大学计算机学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">热爱后端技术，擅长高并发处理和消息队列应用，曾优化核心接口，显著降低响应延迟。</span></div>
+        </div>
+    </div>
+
+    <!-- 第14位：韩梅 -->
+    <div class="employee">
+        <h2>韩梅</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP014</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售总监</span>
+            <span class="label">特长：</span><span class="value">大客户谈判、渠道拓展</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1985-09-27</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">对外经济贸易大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">15年销售管理经验，拥有丰富的政企客户资源，带领团队连续三年实现销售额过亿。</span></div>
+        </div>
+    </div>
+
+    <!-- 第15位：沈涛 -->
+    <div class="employee">
+        <h2>沈涛</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP015</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售总监</span>
+            <span class="label">特长：</span><span class="value">市场策略、团队激励</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1984-11-11</span>
+            <span class="label">学历：</span><span class="value">硕士</span>
+            <span class="label">学院：</span><span class="value">复旦大学管理学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">资深销售战略专家，擅长制定市场拓展计划，善于激励团队，多次完成超额业绩目标。</span></div>
+        </div>
+    </div>
+
+    <!-- 第16位：杨阳 -->
+    <div class="employee">
+        <h2>杨阳</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP016</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售经理</span>
+            <span class="label">特长：</span><span class="value">客户关系维护、方案策划</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1990-03-22</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">中央财经大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">善于深度挖掘客户需求，提供个性化解决方案，客户续约率长期保持在90%以上。</span></div>
+        </div>
+    </div>
+
+    <!-- 第17位：朱峰 -->
+    <div class="employee">
+        <h2>朱峰</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP017</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售经理</span>
+            <span class="label">特长：</span><span class="value">招投标、商务谈判</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1991-08-08</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">同济大学经济与管理学院</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">熟悉政府采购及大型企业招投标流程，商务谈判能力突出，曾主导多个千万级项目签约。</span></div>
+        </div>
+    </div>
+
+    <!-- 第18位：马丽 -->
+    <div class="employee">
+        <h2>马丽</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP018</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售专员</span>
+            <span class="label">特长：</span><span class="value">电话销售、客户跟进</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1996-01-04</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">浙江工商大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">热情开朗，沟通能力强，擅长电话邀约与长期客户跟进，连续三个季度获评销售冠军。</span></div>
+        </div>
+    </div>
+
+    <!-- 第19位：许强 -->
+    <div class="employee">
+        <h2>许强</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP019</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售专员</span>
+            <span class="label">特长：</span><span class="value">线下拜访、产品演示</span>
+            <span class="label">性别：</span><span class="value">男</span>
+            <span class="label">生日：</span><span class="value">1995-05-16</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">南京邮电大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">勤奋务实，擅长现场产品演示和技术答疑，通过面对面拜访有效提升客户转化率。</span></div>
+        </div>
+    </div>
+
+    <!-- 第20位：丁洁 -->
+    <div class="employee">
+        <h2>丁洁</h2>
+        <div class="info">
+            <span class="label">工号：</span><span class="value">EMP020</span>
+            <span class="label">部门：</span><span class="value">销售部</span>
+            <span class="label">职位：</span><span class="value">销售专员</span>
+            <span class="label">特长：</span><span class="value">社群运营、客户转介绍</span>
+            <span class="label">性别：</span><span class="value">女</span>
+            <span class="label">生日：</span><span class="value">1997-09-30</span>
+            <span class="label">学历：</span><span class="value">本科</span>
+            <span class="label">学院：</span><span class="value">深圳大学</span>
+            <div class="intro"><span class="label">简介：</span><span class="value">善于利用社交网络和社群运营拓展客户，重视口碑传播，老客户转介绍率高达40%。</span></div>
+        </div>
+    </div>
+
+</body>
+</html>

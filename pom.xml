@@ -37,6 +37,7 @@
         <module>spring-ai</module>
         <module>langchain4j</module>
         <module>mcp</module>
+        <module>rag</module>
     </modules>
 
     <dependencyManagement>

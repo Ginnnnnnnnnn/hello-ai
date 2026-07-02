@@ -1,0 +1,17 @@
+server:
+  port: 8005
+  servlet:
+    context-path: /rag
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+spring:
+  application:
+    name: rag
+  profiles:
+    active: @profiles.active@
+  ai:
+    dashscope:
+      api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

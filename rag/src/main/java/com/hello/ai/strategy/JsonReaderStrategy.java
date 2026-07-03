@@ -20,8 +20,7 @@ public class JsonReaderStrategy implements DocumentReaderStrategy {
     @Override
     public List<Document> read(File file) {
         Resource resource = new FileSystemResource(file);
-        // 提取 json 的 description、content 字段
-        return new JsonReader(resource, "description", "content").get();
+        return new JsonReader(resource).get();
     }
 
 }

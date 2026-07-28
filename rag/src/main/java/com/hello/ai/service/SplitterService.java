@@ -4,8 +4,8 @@ import org.springframework.ai.document.Document;
 
 import java.util.List;
 
-public interface RagService {
+public interface SplitterService {
 
-    List<Document> test(String path);
+    List<Document> call(String path);
 
 }

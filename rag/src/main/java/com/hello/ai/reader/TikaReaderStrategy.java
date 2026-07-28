@@ -1,7 +1,7 @@
-package com.hello.ai.strategy;
+package com.hello.ai.reader;
 
 import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.JsonReader;
+import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -10,17 +10,18 @@ import java.io.File;
 import java.util.List;
 
 @Component
-public class JsonReaderStrategy implements DocumentReaderStrategy {
+public class TikaReaderStrategy implements DocumentReaderStrategy {
 
+    @Override
     public boolean supports(File file) {
         String name = file.getName().toLowerCase();
-        return name.endsWith(".json");
+        return name.endsWith(".doc") || name.endsWith(".docx");
     }
 
     @Override
     public List<Document> read(File file) {
         Resource resource = new FileSystemResource(file);
-        return new JsonReader(resource).get();
+        return new TikaDocumentReader(resource).get();
     }
 
 }

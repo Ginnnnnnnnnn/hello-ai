@@ -1,7 +1,7 @@
-package com.hello.ai.strategy;
+package com.hello.ai.reader;
 
 import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.TextReader;
+import org.springframework.ai.reader.JsonReader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -10,18 +10,17 @@ import java.io.File;
 import java.util.List;
 
 @Component
-public class TextReaderStrategy implements DocumentReaderStrategy {
+public class JsonReaderStrategy implements DocumentReaderStrategy {
 
-    @Override
     public boolean supports(File file) {
         String name = file.getName().toLowerCase();
-        return name.endsWith(".txt") || name.endsWith(".tex") || name.endsWith(".text");
+        return name.endsWith(".json");
     }
 
     @Override
     public List<Document> read(File file) {
         Resource resource = new FileSystemResource(file);
-        return new TextReader(resource).get();
+        return new JsonReader(resource).get();
     }
 
 }

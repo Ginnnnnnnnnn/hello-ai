@@ -1,4 +1,4 @@
-package com.hello.ai.strategy;
+package com.hello.ai.reader;
 
 import org.springframework.ai.document.Document;
 

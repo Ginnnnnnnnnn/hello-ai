@@ -5,15 +5,13 @@ import org.springframework.ai.document.Document;
 import java.util.List;
 
 /**
- * Reader
+ * Embedding
  *
  * @author Gin
  * @since 2026-07-31
  */
-public interface ReaderService {
+public interface EmbeddingService {
 
-    List<Document> call(String path);
-
-    List<Document> read(String path);
+    List<float[]> call(String path);
 
 }

@@ -2,7 +2,6 @@ package com.hello.ai.service.impl;
 
 import com.hello.ai.reader.DocumentReaderSelector;
 import com.hello.ai.service.ReaderService;
-import com.hello.ai.utils.DocumentUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Reader
+ *
+ * @author Gin
+ * @since 2026-07-31
+ */
 @Slf4j
 @Service
 public class ReaderServiceImpl implements ReaderService {
@@ -21,6 +26,11 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public List<Document> call(String path) {
+        return read(path);
+    }
+
+    @Override
+    public List<Document> read(String path) {
         ClassPathResource resource = new ClassPathResource("file/" + path);
         if (!resource.exists()) {
             throw new IllegalArgumentException("文件不存在: " + path);
@@ -30,8 +40,7 @@ public class ReaderServiceImpl implements ReaderService {
             if (!file.isFile()) {
                 throw new IllegalArgumentException("文件不存在或不是有效文件: " + path);
             }
-            List<Document> documents = documentReaderSelector.read(file);
-            return DocumentUtils.cleanDocuments(documents);
+            return documentReaderSelector.read(file);
         } catch (Exception e) {
             log.error("读取文件失败", e);
             return null;

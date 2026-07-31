@@ -15,3 +15,7 @@ spring:
   ai:
     dashscope:
       api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      embedding:
+        options:
+          model: text-embedding-v4
+          dimensions: 768

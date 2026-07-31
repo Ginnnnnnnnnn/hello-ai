@@ -1,42 +1,62 @@
 package com.hello.ai.service.impl;
 
-import com.hello.ai.reader.DocumentReaderSelector;
+import cn.hutool.core.collection.CollUtil;
+import com.alibaba.cloud.ai.transformer.splitter.RecursiveCharacterTextSplitter;
+import com.hello.ai.service.CleanService;
+import com.hello.ai.service.ReaderService;
 import com.hello.ai.service.SplitterService;
-import com.hello.ai.utils.DocumentUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.transformer.splitter.TextSplitter;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
+/**
+ * Splitter
+ *
+ * @author Gin
+ * @since 2026-07-31
+ */
 @Slf4j
 @Service
 public class SplitterServiceImpl implements SplitterService {
 
     @Autowired
-    private DocumentReaderSelector documentReaderSelector;
+    private ReaderService readerService;
+
+    @Autowired
+    private CleanService cleanService;
 
     @Override
     public List<Document> call(String path) {
-        ClassPathResource resource = new ClassPathResource("file/" + path);
-        if (!resource.exists()) {
-            throw new IllegalArgumentException("文件不存在: " + path);
+        List<Document> documents = readerService.read(path);
+        documents = cleanService.clean(documents);
+        return splitTokenText(documents);
+    }
+
+    @Override
+    public List<Document> splitTokenText(List<Document> documents) {
+        TokenTextSplitter splitter = new TokenTextSplitter(
+                600, 300, 5, 8000, true
+        );
+        return split(splitter, documents);
+    }
+
+    @Override
+    public List<Document> splitRecursiveCharacterText(List<Document> documents) {
+        RecursiveCharacterTextSplitter splitter = new RecursiveCharacterTextSplitter(100);
+        return split(splitter, documents);
+    }
+
+    private List<Document> split(TextSplitter textSplitter, List<Document> documents) {
+        if (CollUtil.isEmpty(documents)) {
+            return Collections.emptyList();
         }
-        try {
-            File file = resource.getFile();
-            if (!file.isFile()) {
-                throw new IllegalArgumentException("文件不存在或不是有效文件: " + path);
-            }
-            List<Document> documents = documentReaderSelector.read(file);
-            documents = DocumentUtils.cleanDocuments(documents);
-            return DocumentUtils.splitRecursiveCharacterText(documents);
-        } catch (Exception e) {
-            log.error("读取文件失败", e);
-            return null;
-        }
+        return textSplitter.apply(documents);
     }
 
 }

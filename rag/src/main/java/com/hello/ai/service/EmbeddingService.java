@@ -1,5 +1,7 @@
 package com.hello.ai.service;
 
+import java.util.List;
+
 /**
  * Embedding
  *
@@ -8,6 +10,8 @@ package com.hello.ai.service;
  */
 public interface EmbeddingService {
 
-    void call(String path);
+    List<float[]> call(String path);
+
+    void store(String path);
 
 }

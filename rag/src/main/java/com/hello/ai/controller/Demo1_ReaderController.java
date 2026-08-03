@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Reader
+ * 读取
  *
  * @author Gin
  * @since 2026-07-31
  */
 @RestController
 @RequestMapping("/reader")
-public class ReaderController {
+public class Demo1_ReaderController {
 
     @Autowired
     private ReaderService readerService;

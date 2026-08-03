@@ -28,6 +28,7 @@
         <spring.ai.jsoup.document.reader.version>1.1.0</spring.ai.jsoup.document.reader.version>
         <spring.ai.markdown.document.reader.version>1.1.0</spring.ai.markdown.document.reader.version>
         <spring.ai.tika.document.reader.version>1.1.0</spring.ai.tika.document.reader.version>
+        <spring.ai.vector.store.pgvector.version>1.1.0</spring.ai.vector.store.pgvector.version>
         <langchain4j.version>1.8.0</langchain4j.version>
         <langchain4j.open.ai.version>1.8.0-beta15</langchain4j.open.ai.version>
         <langchain4j.reactor.version>1.8.0-beta15</langchain4j.reactor.version>
@@ -107,6 +108,11 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-tika-document-reader</artifactId>
                 <version>${spring.ai.tika.document.reader.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
+                <version>${spring.ai.vector.store.pgvector.version}</version>
             </dependency>
             <dependency>
                 <groupId>dev.langchain4j</groupId>

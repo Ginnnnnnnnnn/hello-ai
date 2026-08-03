@@ -1,9 +1,5 @@
 package com.hello.ai.service;
 
-import org.springframework.ai.document.Document;
-
-import java.util.List;
-
 /**
  * Embedding
  *
@@ -12,6 +8,6 @@ import java.util.List;
  */
 public interface EmbeddingService {
 
-    List<float[]> call(String path);
+    void call(String path);
 
 }

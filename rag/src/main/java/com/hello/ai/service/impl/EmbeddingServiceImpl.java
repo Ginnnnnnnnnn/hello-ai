@@ -1,6 +1,6 @@
 package com.hello.ai.service.impl;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.collection.CollUtil;
 import com.hello.ai.service.CleanService;
 import com.hello.ai.service.EmbeddingService;
 import com.hello.ai.service.ReaderService;
@@ -8,6 +8,7 @@ import com.hello.ai.service.SplitterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +36,26 @@ public class EmbeddingServiceImpl implements EmbeddingService {
     @Autowired
     private EmbeddingModel embeddingModel;
 
+    @Autowired
+    private VectorStore vectorStore;
+
     @Override
-    public List<float[]> call(String path) {
+    public void call(String path) {
         List<Document> documents = readerService.read(path);
         documents = cleanService.clean(documents);
         documents = splitterService.splitRecursiveCharacterText(documents);
-        return documents.stream()
-                .filter(item -> StrUtil.isNotBlank(item.getText()))
-                .map(document -> embeddingModel.embed(document.getText()))
-                .toList();
+        embedAndStore(documents);
+    }
+
+    private void embedAndStore(List<Document> documents) {
+        if (CollUtil.isEmpty(documents)) {
+            return;
+        }
+        int batchSize = 9;
+        for (int i = 0; i < documents.size(); i += batchSize) {
+            List<Document> subList = documents.subList(i, Math.min(i + batchSize, documents.size()));
+            vectorStore.add(subList);
+        }
     }
 
 }

@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * Embedding
  *
@@ -22,8 +20,8 @@ public class EmbeddingController {
     private EmbeddingService embeddingService;
 
     @RequestMapping("/call")
-    public List<float[]> call(@RequestParam String path) {
-        return embeddingService.call(path);
+    public void call(@RequestParam String path) {
+        embeddingService.call(path);
     }
 
 }

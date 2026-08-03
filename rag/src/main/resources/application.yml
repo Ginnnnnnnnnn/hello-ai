@@ -12,6 +12,10 @@ spring:
     name: rag
   profiles:
     active: @profiles.active@
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hello-ai
+    username: xxx
+    password: xxx
   ai:
     dashscope:
       api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -19,3 +23,17 @@ spring:
         options:
           model: text-embedding-v4
           dimensions: 768
+    vectorstore:
+      pgvector:
+        # 向量索引类型
+        index-type: HNSW
+        # 距离度量，余弦值
+        distance-type: COSINE_DISTANCE
+        # 向量维度
+        dimensions: 768
+        # 批量处理大小
+        max-document-batch-size: 9
+        # 启动时是否自动创建表
+        initialize-schema: true
+        # 创建的表名
+        table-name: vector_st

@@ -1,6 +1,7 @@
 package com.hello.ai.controller;
 
 import com.hello.ai.service.EmbeddingService;
+import org.springframework.ai.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,11 @@ public class Demo4_EmbeddingController {
     public String store(@RequestParam String path) {
         embeddingService.store(path);
         return "success";
+    }
+
+    @RequestMapping("/search")
+    public List<Document> search(@RequestParam String query) {
+        return embeddingService.search(query);
     }
 
 }

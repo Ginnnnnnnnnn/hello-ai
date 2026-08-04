@@ -8,6 +8,7 @@ import com.hello.ai.service.SplitterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,17 @@ public class EmbeddingServiceImpl implements EmbeddingService {
             List<Document> subList = documents.subList(i, Math.min(i + batchSize, documents.size()));
             vectorStore.add(subList);
         }
+    }
+
+    @Override
+    public List<Document> search(String query) {
+        return vectorStore.similaritySearch(
+                SearchRequest.builder()
+                        .query(query)
+                        .topK(5)
+                        .similarityThreshold(0.5f)
+                        .build()
+        );
     }
 
 }

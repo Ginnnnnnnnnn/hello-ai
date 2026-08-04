@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 /**
  * 召回
@@ -20,8 +21,8 @@ public class Demo5_RetrieveController {
     private RetrieveService retrieveService;
 
     @RequestMapping("/call")
-    public void call(@RequestParam String query) {
-        retrieveService.call(query);
+    public Flux<String> call(@RequestParam String query) {
+        return retrieveService.call(query);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.hello.ai.service;
 
+import reactor.core.publisher.Flux;
+
 /**
  * retrieve
  *
@@ -8,6 +10,6 @@ package com.hello.ai.service;
  */
 public interface RetrieveService {
 
-    void call(String query);
+    Flux<String> call(String query);
 
 }

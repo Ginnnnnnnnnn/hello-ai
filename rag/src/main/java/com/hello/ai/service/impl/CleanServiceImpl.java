@@ -51,7 +51,8 @@ public class CleanServiceImpl implements CleanService {
                         }
                     }
                     text = String.join("\n", seen);
-                    return new Document(text);
+
+                    return new Document(text, doc.getMetadata());
                 })
                 .collect(Collectors.toList());
     }

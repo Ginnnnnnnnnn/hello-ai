@@ -68,6 +68,7 @@ public class EmbeddingServiceImpl implements EmbeddingService {
         return vectorStore.similaritySearch(
                 SearchRequest.builder()
                         .query(query)
+                        .filterExpression("version == 'v0.0.1'")
                         .topK(5)
                         .similarityThreshold(0.5f)
                         .build()

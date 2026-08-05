@@ -40,7 +40,11 @@ public class ReaderServiceImpl implements ReaderService {
             if (!file.isFile()) {
                 throw new IllegalArgumentException("文件不存在或不是有效文件: " + path);
             }
-            return documentReaderSelector.read(file);
+            List<Document> documents = documentReaderSelector.read(file);
+            for (Document document : documents) {
+                document.getMetadata().put("version", "v0.0.1");
+            }
+            return documents;
         } catch (Exception e) {
             log.error("读取文件失败", e);
             return null;

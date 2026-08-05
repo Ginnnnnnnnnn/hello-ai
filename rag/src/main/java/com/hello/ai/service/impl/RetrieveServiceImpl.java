@@ -62,7 +62,12 @@ public class RetrieveServiceImpl implements RetrieveService, InitializingBean {
 
     @Override
     public Flux<String> call(String query) {
-        return chatClient.prompt(query).stream().content();
+        return chatClient.prompt(query)
+                .advisors(advisorSpec -> {
+                    advisorSpec.param(QuestionAnswerAdvisor.FILTER_EXPRESSION, "version == 'v0.0.0'");
+                })
+                .stream()
+                .content();
     }
 
 }

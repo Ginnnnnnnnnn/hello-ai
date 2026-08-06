@@ -57,11 +57,12 @@ public class RetrieveServiceImpl implements RetrieveService, InitializingBean {
                         DashScopeChatOptions.builder()
                                 .temperature(0.7)
                                 .build()
-                ).build();
+                )
+                .build();
     }
 
     @Override
-    public Flux<String> call(String query) {
+    public Flux<String> chat(String query) {
         return chatClient.prompt(query)
                 .advisors(advisorSpec -> {
                     advisorSpec.param(QuestionAnswerAdvisor.FILTER_EXPRESSION, "version == 'v0.0.0'");

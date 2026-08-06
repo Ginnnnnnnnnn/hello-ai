@@ -3,12 +3,12 @@ package com.hello.ai.service;
 import reactor.core.publisher.Flux;
 
 /**
- * retrieve
+ * modular
  *
  * @author Gin
- * @since 2026-08-04
+ * @since 2026-08-06
  */
-public interface RetrieveService {
+public interface ModularService {
 
     Flux<String> chat(String query);
 

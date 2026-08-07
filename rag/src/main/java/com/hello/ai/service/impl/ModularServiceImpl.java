@@ -5,9 +5,13 @@ import com.hello.ai.service.ModularService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
+import org.springframework.ai.rag.generation.augmentation.ContextualQueryAugmenter;
+import org.springframework.ai.rag.generation.augmentation.QueryAugmenter;
 import org.springframework.ai.rag.preretrieval.query.expansion.MultiQueryExpander;
 import org.springframework.ai.rag.preretrieval.query.transformation.RewriteQueryTransformer;
+import org.springframework.ai.rag.retrieval.join.ConcatenationDocumentJoiner;
 import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore;
@@ -52,18 +56,22 @@ public class ModularServiceImpl implements ModularService, InitializingBean {
                 .similarityThreshold(0.5)
                 .topK(5)
                 .build();
-
         RewriteQueryTransformer rewriteQueryTransformer = RewriteQueryTransformer.builder()
                 .chatClientBuilder(ChatClient.builder(chatModel).build().mutate())
                 .build();
-
         MultiQueryExpander multiQueryExpander = MultiQueryExpander.builder()
                 .chatClientBuilder(ChatClient.builder(chatModel).build().mutate())
                 .numberOfQueries(3)
                 .includeOriginal(true)
                 .build();
-
-
+        PromptTemplate promptTemplate = new PromptTemplate("""
+                知识库中未检索到任何信息，自主回答一下用户问题:
+                {query}
+                """);
+        promptTemplate.add("query", query);
+        QueryAugmenter queryAugmenter = ContextualQueryAugmenter.builder()
+                .emptyContextPromptTemplate(promptTemplate)
+                .build();
         RetrievalAugmentationAdvisor retrievalAugmentationAdvisor = RetrievalAugmentationAdvisor.builder()
                 // 检索阶段：从向量库检索文档（必需）
                 .documentRetriever(documentRetriever)
@@ -72,11 +80,10 @@ public class ModularServiceImpl implements ModularService, InitializingBean {
                 // 查询预处理：扩展查询（可选）
                 .queryExpander(multiQueryExpander)
                 // 后处理阶段：合并文档（当使用查询扩展时推荐）
-//                .documentJoiner(multiQueryExpander)
+                .documentJoiner(new ConcatenationDocumentJoiner())
                 // 生成阶段：构建增强提示词（可选，有默认实现）
-//                .queryAugmenter(queryAugmenter)
+                .queryAugmenter(queryAugmenter)
                 .build();
-
         return chatClient.prompt(query)
                 .advisors(retrievalAugmentationAdvisor)
                 .stream()

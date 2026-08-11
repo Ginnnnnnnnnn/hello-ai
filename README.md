@@ -1,4 +1,4 @@
-# 🤖 Hello AI
+# Hello AI
 
 项目用于对于 AI 的基础探索与学习。
 
@@ -17,3 +17,7 @@
 ## 🔍RAG
 
 [REDAME.md](rag/README.md)
+
+## 🤖Agent
+
+[REDAME.md](agent/README.md)

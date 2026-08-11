@@ -44,6 +44,7 @@
         <module>langchain4j</module>
         <module>mcp</module>
         <module>rag</module>
+        <module>agent</module>
     </modules>
 
     <dependencyManagement>

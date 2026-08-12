@@ -1,0 +1,17 @@
+server:
+  port: 8007
+  servlet:
+    context-path: /agent/design-pattern
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+spring:
+  application:
+    name: react-agent
+  profiles:
+    active: @profiles.active@
+  ai:
+    dashscope:
+      api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

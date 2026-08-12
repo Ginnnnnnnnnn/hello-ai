@@ -45,6 +45,7 @@
         <module>mcp</module>
         <module>rag</module>
         <module>agent</module>
+        <module>agent/design-pattern</module>
     </modules>
 
     <dependencyManagement>

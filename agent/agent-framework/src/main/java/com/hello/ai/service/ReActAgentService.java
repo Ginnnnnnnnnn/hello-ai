@@ -10,4 +10,6 @@ public interface ReActAgentService {
 
     String chat(String chatId, String msg);
 
+    String chatAlibaba(String chatId, String msg);
+
 }

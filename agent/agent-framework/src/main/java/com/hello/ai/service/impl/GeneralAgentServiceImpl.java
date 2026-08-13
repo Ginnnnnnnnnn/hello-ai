@@ -46,7 +46,6 @@ public class GeneralAgentServiceImpl implements GeneralAgentService {
         Prompt prompt = new Prompt(
                 messages,
                 ToolCallingChatOptions.builder()
-                        //指定工具
                         .toolCallbacks(ToolCallbacks.from(new DateTimeTools(), new WeatherTools()))
                         .model("deepseek-v3")
                         .build()

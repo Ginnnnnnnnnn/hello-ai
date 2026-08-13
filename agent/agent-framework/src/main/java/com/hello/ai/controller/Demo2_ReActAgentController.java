@@ -24,4 +24,9 @@ public class Demo2_ReActAgentController {
         return reActAgentService.chat(chatId, msg);
     }
 
+    @RequestMapping("/chatAlibaba")
+    public String chatAlibaba(@RequestParam String chatId, @RequestParam String msg) {
+        return reActAgentService.chatAlibaba(chatId, msg);
+    }
+
 }

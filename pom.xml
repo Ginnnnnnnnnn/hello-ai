@@ -18,6 +18,7 @@
     <properties>
         <java.version>21</java.version>
         <spring.ai.alibaba.version>1.1.0.0</spring.ai.alibaba.version>
+        <spring.ai.alibaba.agent.framework.version>1.1.0.0</spring.ai.alibaba.agent.framework.version>
         <spring.ai.alibaba.chat.memory.version>1.1.0</spring.ai.alibaba.chat.memory.version>
         <spring.ai.alibaba.chat.memory.jdbc.version>1.1.0</spring.ai.alibaba.chat.memory.jdbc.version>
         <spring.ai.model.ollama.version>1.1.0</spring.ai.model.ollama.version>
@@ -45,7 +46,6 @@
         <module>mcp</module>
         <module>rag</module>
         <module>agent</module>
-        <module>agent/design-pattern</module>
     </modules>
 
     <dependencyManagement>
@@ -61,6 +61,11 @@
                 <groupId>com.alibaba.cloud.ai</groupId>
                 <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
                 <version>${spring.ai.alibaba.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-agent-framework</artifactId>
+                <version>${spring.ai.alibaba.agent.framework.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>

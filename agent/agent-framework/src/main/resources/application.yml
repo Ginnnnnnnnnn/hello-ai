@@ -1,7 +1,7 @@
 server:
   port: 8007
   servlet:
-    context-path: /agent/design-pattern
+    context-path: /agent/agent-framework
     encoding:
       charset: UTF-8
       force: true

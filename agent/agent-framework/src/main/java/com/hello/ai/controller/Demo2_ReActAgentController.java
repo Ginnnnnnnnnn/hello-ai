@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 /**
  * ReAct
@@ -27,6 +28,11 @@ public class Demo2_ReActAgentController {
     @RequestMapping("/chatAlibaba")
     public String chatAlibaba(@RequestParam String chatId, @RequestParam String msg) {
         return reActAgentService.chatAlibaba(chatId, msg);
+    }
+
+    @RequestMapping("/chatAlibabaStream")
+    public Flux<String> chatAlibabaStream(@RequestParam String chatId, @RequestParam String msg) {
+        return reActAgentService.chatAlibabaStream(chatId, msg);
     }
 
 }
